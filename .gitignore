@@ -1,6 +1,8 @@
 #Rendered Files
 public/
 
+#Cache files
+.sass-cache/
 
 #Others
 node_modules/
