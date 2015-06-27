@@ -1,0 +1,14 @@
+footer {
+	padding: 30px 0;
+
+	background: {
+		image: url(../img/header-image.jpg);
+		size: cover;
+		position: center 95%;
+	}
+
+	& span{
+		margin-left: 5px;
+		background: rgba(white, 0.7);
+	}
+}

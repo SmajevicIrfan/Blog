@@ -1,28 +1,30 @@
 doctype html
 html(lang="en")
-  head
-    title= pageTitle
+	head
+		title= pageTitle
 
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 
-    link(rel='stylesheet' href='./css/bootstrap.min.css')
-    link(rel='stylesheet' href='./css/bootstrap-theme.min.css')
-    //link(rel='stylesheet' href='/css/style.css')
+		link(rel='stylesheet' href='css/bootstrap.min.css')
+		link(rel='stylesheet' href='css/bootstrap-theme.min.css')
+		link(rel='stylesheet' href='css/main.css')
 
-  body
-    block header
-    block nav
+	body
+		.header
+			block header
+			block nav
 
-    block content
+		block content
+		
+		block footer
 
-    block footer
+		//jQuery
+		script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js")
 
-    //jQuery
-    script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js")
+		//Bootstrap js
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
 
-    //Bootstrap js
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
-
-    //LiveReload
-    script(src="//localhost:35729/livereload.js")
+		//LiveReload
+		script(src="//localhost:35729/livereload.js")

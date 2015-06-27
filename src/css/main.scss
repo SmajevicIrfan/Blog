@@ -1,1 +1,6 @@
-@import "modules/config"
+@import 'modules/config';
+
+@import 'partials/header';
+@import 'partials/footer';
+
+@import 'vendor/bourbon/bourbon';
