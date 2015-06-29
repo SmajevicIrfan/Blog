@@ -1,2 +1,2 @@
-# Blog-Frontend
-My Blog Frontend
+# Blog
+My Blog
