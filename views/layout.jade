@@ -5,26 +5,24 @@ html(lang="en")
 
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
-		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
+		meta(name="HandheldFriendly" content="true")
 
-		link(rel='stylesheet' href='css/bootstrap.min.css')
-		link(rel='stylesheet' href='css/bootstrap-theme.min.css')
-		link(rel='stylesheet' href='css/main.css')
+		meta(name="author" content="Irfan Smajevic")
+		meta(name="description" content="The travel blog for our group.**")
+
+		script(src="//use.typekit.net/gkd3zab.js")
+		script try{Typekit.load();}catch(e){}
+
+		link(rel="shortcut icon" href="/img/favicons/favicon.ico")
+		link(rel="stylesheet" href="/css/main.min.css")
 
 	body
-		.header
-			block header
-			block nav
+		block nav
+		block jumbotron
 
+		block title
 		block content
-		
-		block footer
 
 		//jQuery
 		script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js")
-
-		//Bootstrap js
-		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
-
-		//LiveReload
-		script(src="//localhost:35729/livereload.js")

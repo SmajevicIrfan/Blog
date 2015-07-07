@@ -1,0 +1,28 @@
+extends ./nav.jade
+
+block jumbotron
+	#jumbotron
+		.social-info
+			.likes
+				.like-icn
+				h6.like-num= feature.likes.length
+			.comments
+				.comm-icn
+				h6.comm-num= feature.comments.length
+
+		.edit-btn
+
+		.article-info
+			h2.title= feature.title
+			h3.date= feature.date
+
+			.people
+				- each person in feature.people
+					figure.person
+						img(src="/img/users/"+person.avatar alt=person.name)
+						figcaption
+							a(href="/user/"+person._id)
+
+		#view-more
+			h6 Featured story
+			h6= "About "+feature.title

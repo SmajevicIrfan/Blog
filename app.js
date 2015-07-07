@@ -2,7 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 
-var routes = require('./routes')
+var routes = require('./routes');
 
 var app = express();
 
@@ -23,10 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting of routes
 app.get('/', routes.index);
-app.get('/engineering', routes.engineering);
-app.get('/map', routes.map);
-app.get('/about', routes.about);
-app.get('/contact', routes.contact);
 
 var server = http.createServer(app);
 

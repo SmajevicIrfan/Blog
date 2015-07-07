@@ -1,6 +1,18 @@
-@import 'modules/config';
+// Modules
+@import '/modules/vars';
 
-@import 'partials/header';
-@import 'partials/footer';
-
+// Vendor(3rd party) tools
 @import 'vendor/bourbon/bourbon';
+
+// Base files
+@import 'base/normalize';
+@import 'base/body-element';
+@import 'base/selection-colors';
+@import 'base/links';
+@import 'base/typography';
+@import 'base/buttons';
+
+// Partials(Common modules on pages)
+@import 'partials/flex-video';
+@import 'partials/name-lockup.scss';
+@import 'partials/grid';

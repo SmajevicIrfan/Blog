@@ -1,5 +1,31 @@
-extends ./footer.jade
+extends ./title.jade
 
 block content
-	p.
-		This is the main homepage! Pozdrav Hani!
+	#articles.grid
+		- each article in articles
+				figure.article
+					img(src="img/article-thumbs/"+article.thumb)
+					figcaption
+						.social-info
+							.likes
+								.like-icn
+								h6.like-num= article.likes.length
+							.comments
+								.comm-icn
+								h6.comm-num= article.comments.length
+
+						.edit
+							.edit-btn
+							.delete-btn
+
+						.article-info
+							h4.title= article.title
+
+						a(href="/"+article.url) View more
+
+						.people
+							- each person in article.people
+								figure.person
+										img(src="/img/users/"+person.avatar alt=person.name)
+										figcaption
+											a(href="/user/"+person._id)
