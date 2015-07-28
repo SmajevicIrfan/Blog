@@ -1,9 +1,13 @@
 body {	
-	background-color: white;
+	background-color: $silver;
 	font-size: 14px;
 	line-height: 1.6;
-	font-family: 'Fira Sans', sans-serif;
-	color: #666;
+	font-family: 'fira-sans', sans-serif;
+	color: $black;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
+}
+
+* {
+	box-sizing: border-box;
 }

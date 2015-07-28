@@ -2,14 +2,8 @@ var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 var mongoURL = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
-//mongoURL = "mongodb://localhost:27017/test";
+mongoURL = "mongodb://127.0.0.1:27017/test";
 var mongoOptions = { };
-/*
-MongoClient.connect(mongoURL, function(err, db) {
-	assert(null, err);
-	console.log('Connection successful to: ' + mongoURL + '!');
-});
-*/
 
 mongoose.connect(mongoURL, mongoOptions, function(err, res) {
 	if (err) { 

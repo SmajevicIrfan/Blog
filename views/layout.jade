@@ -12,17 +12,21 @@ html(lang="en")
 		meta(name="description" content="The travel blog for our group.**")
 
 		script(src="//use.typekit.net/gkd3zab.js")
-		script try{Typekit.load();}catch(e){}
+		script try { Typekit.load(); } catch(e) {}
 
 		link(rel="shortcut icon" href="/img/favicons/favicon.ico")
 		link(rel="stylesheet" href="/css/main.min.css")
 
 	body
-		block nav
+		include ./nav.jade
 		block jumbotron
+			include ./jumbotron.jade
 
 		block title
+			include ./title.jade
 		block content
+
+		include ./footer.jade
 
 		//jQuery
 		script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js")

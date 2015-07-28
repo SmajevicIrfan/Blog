@@ -1,28 +1,38 @@
-extends ./nav.jade
-
 block jumbotron
 	#jumbotron
-		.social-info
-			.likes
-				.like-icn
-				h6.like-num= feature.likes.length
-			.comments
-				.comm-icn
-				h6.comm-num= feature.comments.length
+		section.overlay
+			img(src="/img/article-thumbs/"+feature.thumb, alt="")#hero-img
 
-		.edit-btn
+		.wrapper
+			.flex-top
+				.top
+					.meta
+						.likes
+							img(src="/img/icons/heart.svg").like-icn
+							h5.like-num= feature.likes
+						
+						.comments
+							img(src="/img/icons/comment.svg").comm-icn
+							h5.comm-num= feature.comments.length
 
-		.article-info
-			h2.title= feature.title
-			h3.date= feature.date
+					.edit-btn
 
-			.people
-				- each person in feature.people
-					figure.person
-						img(src="/img/users/"+person.avatar alt=person.name)
-						figcaption
-							a(href="/user/"+person._id)
+				h2.title= feature.title
+				h5.date= (feature.created[1] + ' ' + feature.created[2] + ', ' + feature.created[3])
+			
+			.bottom
+				.people
+					- each person in feature.people
+						figure.person
+							img(src="/img/users/"+person.avatar, alt=person.name)
+							figcaption
+								a(href="/user/"+person._id)
 
-		#view-more
-			h6 Featured story
-			h6= "About "+feature.title
+				#view-more
+					.left
+						h5 Featured story
+						h5 View More
+
+					img(src="/img/icons/chevron-with-circle-right.svg")
+
+		a(href="/"+feature.url) View More

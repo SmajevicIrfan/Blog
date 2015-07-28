@@ -1,5 +1,5 @@
 // Modules
-@import '/modules/vars';
+@import 'modules/vars';
 
 // Vendor(3rd party) tools
 @import 'vendor/bourbon/bourbon';
@@ -14,5 +14,11 @@
 
 // Partials(Common modules on pages)
 @import 'partials/flex-video';
-@import 'partials/name-lockup.scss';
+@import 'partials/name-lockup';
 @import 'partials/grid';
+@import 'partials/article-info';
+
+// Pages partials
+@import 'partials/nav';
+@import 'partials/jumbotron';
+@import 'partials/title';

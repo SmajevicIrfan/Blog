@@ -364,7 +364,7 @@ ArticleProvider.prototype.create = function(req, callback) {
 	}
 
 	var article = req.body.article;
-	if (article == null || article.title == null || article.content == null || 			article.tags == null) {
+	if (article == null || article.title == null || article.content == null || article.tags == null) {
 		callback(400, null);
 	}
 

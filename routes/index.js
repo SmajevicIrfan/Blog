@@ -20,45 +20,66 @@ exports.index = function(req, res) {
 	});
 };
 
-exports.nav = function(req, res) {
-	res.render('nav', { pageTitle: 'Blog Nav' });
-}
-
-// Engeneering
-exports.engineering = function(req, res) {
-	res.render('engineering', { pageTitle: 'Engineering' })
-};
-
-// Map
-exports.map = function(req, res) {
-	res.render('map', { pageTitle: 'Map' })
-};
-
-// About
-exports.about = function(req, res) {
-	res.render('about', { pageTitle: 'About' })
-};
-
-// Contact
-exports.contact = function(req, res) {
-	res.render('contact', { pageTitle: 'Contact' })
-};
-
-// Login
-exports.login = function(req, res) {
-	res.render('login', { pageTitle: 'Login' });
-};
-
-// New Blog post
-exports.newArticleGet = function(req, res) {
-	res.render('new-article', { pageTitle: 'New Blog post' });
-};
-
-exports.newArticlePost = function(req, res) {
-	articleProvider.save({
-		title: req.param('title'),
-		body: req.param('body')
-	}, function(error, docs) {
-		res.redirect('/')
+exports.dummy = function(req, res) {
+	res.render('index', {
+		pageTitle: 'Blog Homepage',
+		feature: {
+			title: 'Featured test',
+			content: 'Just testing the webpage w/out the db working!',
+			author: {
+				username: 'TheCrew',
+				name: 'The Crew',
+				avatar: 'crew-avatar.jpg'
+			},
+			thumb: 'feature-thumb.jpg',
+			created: new Date().toString().split(' '),
+			tags: ['testing', 'jade'],
+			people: [ {
+				username: 'IrfanS',
+				name: 'Irfan Smajevic',
+				avatar: 'crew-avatar.jpg'
+			},
+			{
+				username: 'Miron',
+				name: 'Miron Banjac',
+				avatar: 'default-avatar.png'
+			}],
+			views: 200,
+			likes: 27,
+			comments: [ {
+				user : {
+					username: 'Negroops',
+					avatar: 'default-avatar.png'
+				},
+				content: 'The site looks amaying for now!',
+				created: new Date().toString().split(' '),
+				likes: 2
+			}]
+		},
+		articles: [{
+			title: 'Article test 1',
+			content: 'Just testing the webpage w/out the db working!',
+			author: {
+				username: 'IrfanS',
+				name: 'Irfan Smajevic',
+				avatar: 'crew-avatar.jpg'
+			},
+			thumb: 'article-thumb1.jpg',
+			created: new Date().toString().split(' '),
+			tags: ['testing', 'jade'],
+			people: [ {
+				username: 'IrfanS',
+				name: 'Irfan Smajevic',
+				avatar: 'crew-avatar.jpg'
+			},
+			{
+				username: 'Miron',
+				name: 'Miron Banjac',
+				avatar: 'default-avatar.png'
+			}],
+			views: 172,
+			likes: 30,
+			comments: []
+		}]
 	});
 };

@@ -1,24 +1,24 @@
-extends ./layout.jade
-
 block nav
-	#logo
+	nav
+		#logo
 
-	ul#nav
-		li
-			a(href="/") Articles
-		li
-			a(href="/works") Works
-		li
-			a(href="/map") Map
-		li
-			a(href="/about") About
-		li
-			a(href="/contact") Contact
+		ul#nav
+			li.active
+				a(href="/") Articles
+			li
+				a(href="/works") Works
+			li
+				a(href="/map") Map
+			li
+				a(href="/about") About
+			li
+				a(href="/contact") Contact
 
-	#srch-btn
+		#nav-cta
+			#srch-btn
 
-	#login
+			#login
 
-	#logged-in
-		#profile
-		#new-post
+			#logged-in
+				#profile
+				#new-post

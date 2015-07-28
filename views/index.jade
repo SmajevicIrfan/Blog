@@ -1,31 +1,31 @@
-extends ./title.jade
+extends ./layout.jade
 
 block content
 	#articles.grid
 		- each article in articles
 				figure.article
-					img(src="img/article-thumbs/"+article.thumb)
+					img(src="img/article-thumbs/"+article.thumb).thumb
 					figcaption
-						.social-info
-							.likes
-								.like-icn
-								h6.like-num= article.likes.length
-							.comments
-								.comm-icn
-								h6.comm-num= article.comments.length
+						.article-info
+							.meta
+								.likes
+									.like-icn
+									h6.like-num= article.likes
+								.comments
+									.comm-icn
+									h6.comm-num= article.comments.length
+
+							h4.title= article.title
+
+							.people
+								- each person in article.people
+									figure.person
+											img(src="/img/users/"+person.avatar alt=person.name)
+										figcaption
+											a(href="/user/"+person._id)
 
 						.edit
 							.edit-btn
 							.delete-btn
 
-						.article-info
-							h4.title= article.title
-
 						a(href="/"+article.url) View more
-
-						.people
-							- each person in article.people
-								figure.person
-										img(src="/img/users/"+person.avatar alt=person.name)
-										figcaption
-											a(href="/user/"+person._id)

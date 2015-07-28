@@ -16,13 +16,13 @@ app.use(require('node-sass-middleware')({
 	dest: path.join(__dirname, 'public'),
 	debug: true,
 	outputStyle: 'compressed',
-	prefix: '/styles'
+	prefix: '/css'
 }));
 */
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting of routes
-app.get('/', routes.index);
+app.get('/', routes.dummy);
 
 var server = http.createServer(app);
 
