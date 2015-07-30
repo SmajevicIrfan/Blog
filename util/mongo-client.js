@@ -1,8 +1,6 @@
+/* global process */
 var mongoose = require('mongoose');
-var MongoClient = require('mongodb').MongoClient,
-	assert = require('assert');
-var mongoURL = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
-mongoURL = "mongodb://127.0.0.1:27017/test";
+var mongoURL = process.env.CUSTOMCONNSTR_MONGOLAB_URI || "mongodb://127.0.0.1:27017/blog";
 var mongoOptions = { };
 
 mongoose.connect(mongoURL, mongoOptions, function(err, res) {
@@ -74,6 +72,6 @@ var articleModel = mongoose.model('Article', Article);
 var commentModel = mongoose.model('Comment', Comment);
 
 // Export Models
-exports.userModel = userModel;
-exports.articleModel = articleModel;
-exports.commentModel = commentModel;
+exports.UserModel = userModel;
+exports.ArticleModel = articleModel;
+exports.CommentModel = commentModel;

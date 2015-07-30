@@ -1,3 +1,6 @@
+/* global __dirname */
+/* global process */
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -10,19 +13,10 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-/*
-app.use(require('node-sass-middleware')({
-	src: path.join(__dirname, 'src'),
-	dest: path.join(__dirname, 'public'),
-	debug: true,
-	outputStyle: 'compressed',
-	prefix: '/css'
-}));
-*/
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting of routes
-app.get('/', routes.dummy);
+app.get('/', routes.index);
 
 var server = http.createServer(app);
 

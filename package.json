@@ -28,9 +28,7 @@
   "dependencies": {
     "express": "^4.12.4",
     "jade": "^1.11.0",
-    "mongodb": "^2.0.36",
-    "mongoose": "^4.0.6",
-    "node-sass": "^3.2.0"
+    "mongoose": "^4.0.6"
   },
   "devDependencies": {
     "del": "^1.2.0",

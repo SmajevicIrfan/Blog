@@ -1,12 +1,12 @@
 var db = require('./mongo-client');
 
-var publicFields = '_id title body url author tags created likes comments';
+var publicFields = '_id title content url author tags created likes comments';
 ArticleProvider = function() {};
 
 ////////////////////////////////////////////////////////////////////
 /*
 exports.list = function(req, res) {
-	var query = db.articleModel.find({published: true});
+	var query = db.ArticleModel.find({published: true});
 
 	query.select(publicFields);
 	query.sort('-created');
@@ -29,7 +29,7 @@ exports.listAll = function(req, res) {
 		return res.send(401);
 	}
 
-	var query = db.articleModel.find();
+	var query = db.ArticleModel.find();
 	query.sort('-created');
 	query.exec(function(err, results) {
 		if (err) {
@@ -51,7 +51,7 @@ exports.read = function(req, res) {
 		return res.send(400);
 	}
 
-	var query = db.articleModel.findOne({_id: id});
+	var query = db.ArticleModel.findOne({_id: id});
 	query.select(publicFields);
 	query.exec(function(err, result) {
 		if (err) {
@@ -76,7 +76,7 @@ exports.like = function(req, res) {
 	}
 
 
-	db.articleModel.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
 		if (err) {
 			console.log(err);
 			return res.send(400);
@@ -93,7 +93,7 @@ exports.unlike = function(req, res) {
 	}
 
 
-	db.articleModel.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
 		if (err) {
 			console.log(err);
 			return res.send(400);
@@ -114,7 +114,7 @@ exports.create = function(req, res) {
 		return res.send(400);
 	}
 
-	var postEntry = new db.articleModel();
+	var postEntry = new db.ArticleModel();
 	postEntry.title = post.title;
 	postEntry.tags = post.tags.split(',');
 	postEntry.published = post.published;
@@ -166,7 +166,7 @@ exports.update = function(req, res) {
 
 	updatePost.updated = new Date();
 
-	db.articleModel.update({_id: post._id}, updatePost, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: post._id}, updatePost, function(err, nbRows, raw) {
 		return res.send(200);
 	});
 };
@@ -181,7 +181,7 @@ exports.delete = function(req, res) {
 		res.send(400);
 	} 
 
-	var query = db.articleModel.findOne({_id:id});
+	var query = db.ArticleModel.findOne({_id:id});
 
 	query.exec(function(err, result) {
 		if (err) {
@@ -206,7 +206,7 @@ exports.listByTag = function(req, res) {
 		return res.send(400);
 	}
 
-	var query = db.articleModel.find({tags: tagName, published: true});
+	var query = db.ArticleModel.find({tags: tagName, published: true});
 	query.select(publicFields);
 	query.sort('-created');
 	query.exec(function(err, results) {
@@ -226,7 +226,7 @@ exports.listByTag = function(req, res) {
 ////////////////////////////////////////////////////////////////////
 
 ArticleProvider.prototype.list = function(req, callback) {
-	var query = db.articleModel.find({published: true});
+	var query = db.ArticleModel.find({published: true});
 
 	query.select(publicFields);
 	query.sort('-created');
@@ -252,7 +252,7 @@ ArticleProvider.prototype.listAll = function(req, callback) {
 		return;
 	}
 
-	var query = db.articleModel.find();
+	var query = db.ArticleModel.find();
 	query.sort('-created');
 	query.exec(function(err, results) {
 		if (err) {
@@ -277,7 +277,7 @@ ArticleProvider.prototype.read = function(req, callback) {
 		return;
 	}
 
-	var query = db.articleModel.findOne({_id: id});
+	var query = db.ArticleModel.findOne({_id: id});
 	query.select(publicFields);
 	query.exec(function(err, result) {
 		if (err) {
@@ -306,7 +306,7 @@ ArticleProvider.prototype.like = function(req, callback) {
 	}
 
 
-	db.articleModel.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
 		if (err) {
 			console.log(err);
 			callback(400, null);
@@ -324,7 +324,7 @@ ArticleProvider.prototype.unlike = function(req, callback) {
 		return;
 	}
 
-	db.articleModel.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
 		if (err) {
 			console.log(err);
 			callback(400, null);
@@ -336,17 +336,23 @@ ArticleProvider.prototype.unlike = function(req, callback) {
 };
 
 ArticleProvider.prototype.comment = function(req, callback) {
+	var id = req.body.id || '';
+	if (id == '') {
+		callback(400, null);
+		return;
+	}
+	
 	var comment = req.body.comment;
 	if (comment == null || comment.user == null || comment.content == null) {
 		callback(400, null);
 	}
 
-	var commentEntry = new db.commentModel();
+	var commentEntry = new db.CommentModel();
 	commentEntry.user = comment.user;
 	commentEntry.content = comment.content;
 
 	// TODO test this, and change if needed
-	db.articleModel.update({_id: id}, { $inc: { comments: commentEntry } }, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: id}, { $inc: { comments: commentEntry } }, function(err, nbRows, raw) {
 		if (err) {
 			console.log(err);
 			callback(400, null);
@@ -368,7 +374,7 @@ ArticleProvider.prototype.create = function(req, callback) {
 		callback(400, null);
 	}
 
-	var articleEntry = new db.articleModel();
+	var articleEntry = new db.ArticleModel();
 	articleEntry.title = article.title;
 	articleEntry.content = article.content;
 	articleEntry.tags = article.tags.split(',');
@@ -444,7 +450,7 @@ ArticleProvider.prototype.update = function(req, callback) {
 
 	articleUpdate.updated = new Date();
 
-	db.articleModel.update({_id: article._id}, articleUpdate, function(err, nbRows, raw) {
+	db.ArticleModel.update({_id: article._id}, articleUpdate, function(err, nbRows, raw) {
 		callback(null, null);
 	});
 };
@@ -461,7 +467,7 @@ ArticleProvider.prototype.delete = function(req, callback) {
 		return;
 	}
 
-	var query = db.articleModel.findOne({_id: id});
+	var query = db.ArticleModel.findOne({_id: id});
 	query.exec(function(err, result) {
 		if (err) {
 			console.log(err);
@@ -486,7 +492,7 @@ ArticleProvider.prototype.listByTag = function(req, callback) {
 		return;
 	}
 
-	var query = db.articleModel.find({tags: tagName, published: true});
+	var query = db.ArticleModel.find({tags: tagName, published: true});
 	query.select(publicFields);
 	query.sort('-created');
 	query.exec(function(err, results) {
@@ -507,12 +513,12 @@ ArticleProvider.prototype.listByTag = function(req, callback) {
 
 ArticleProvider.prototype.listByAuthor = function(req, callback) {
 	var authorID = req.params.authorID;
-	if (author == null) {
+	if (authorID == null) {
 		callback(400, null);
 		return;
 	}
 
-	var query = db.articleModel.find({author: authorID, published: true});
+	var query = db.ArticleModel.find({author: authorID, published: true});
 	query.select(publicFields);
 	query.sort('-created');
 	query.exec(function(err, results) {
@@ -532,19 +538,18 @@ ArticleProvider.prototype.listByAuthor = function(req, callback) {
 };
 
 ArticleProvider.prototype.findFeature = function() {
-	var query = db.articleModel.find({published: true});
+	var query = db.ArticleModel.find({published: true});
 
 	query.sort('-views');
 	query.select(publicFields);
 	query.exec(function(err, results) {
 		if (err) {
 			console.log(err);
-			callback(400, null);
-			return;
+			return 400;
 		}
 
-		result[0].body = "";
-		return result[0];
+		results[0].content = "";
+		return results[0];
 	});
 };
 
