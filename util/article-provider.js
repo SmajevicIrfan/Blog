@@ -365,13 +365,13 @@ ArticleProvider.prototype.comment = function(req, callback) {
 
 ArticleProvider.prototype.create = function(req, callback) {
 	if (!req.admin) {
-		callback(401, null);
+		callback(401);
 		return;
 	}
 
 	var article = req.body.article;
 	if (article == null || article.title == null || article.content == null || article.tags == null) {
-		callback(400, null);
+		callback(400);
 	}
 
 	var articleEntry = new db.ArticleModel();
@@ -391,23 +391,23 @@ ArticleProvider.prototype.create = function(req, callback) {
 	articleEntry.save(function(err) {
 		if (err) {
 			console.log(err);
-			callback(400, null);
+			callback(400);
 		}
 		else {
-			callback(200, null);
+			callback(null);
 		}
 	});
 };
 
 ArticleProvider.prototype.update = function(req, callback) {
 	if (!req.admin) {
-		callback(401, null);
+		callback(401);
 		return;
 	}
 
 	var article = req.body.article;
 	if (article == null || article._id == null) {
-		callback(400, null);
+		callback(400);
 	}
 
 	var articleUpdate = {};
@@ -451,7 +451,7 @@ ArticleProvider.prototype.update = function(req, callback) {
 	articleUpdate.updated = new Date();
 
 	db.ArticleModel.update({_id: article._id}, articleUpdate, function(err, nbRows, raw) {
-		callback(null, null);
+		callback(null);
 	});
 };
 

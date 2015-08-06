@@ -54,7 +54,7 @@ var Article = new Schema({
 	created	  : { type: Date, default: Date.now },
 	updated	  : { type: Date, default: Date.now },
 	published : { type: Boolean, default: false },
-	tags	  : [ {type: String} ],
+	tags	  : [ {type: String, default: ''} ],
 	people	  : [ {
 		username	: String,
 		name 		: String,

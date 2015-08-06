@@ -1,0 +1,17 @@
+extends ./layout.jade
+
+block jumbotron
+	
+block title
+	
+block content
+	form(method="post")
+		div
+			div
+				span Title :
+				input(type="text", name="title", id="editArticleTitle")
+			div
+				span Body :
+				textarea( name="content", rows=20, id="editArticleContent")
+			div#editArticleSubmit
+				input(type="submit", value="Send")
