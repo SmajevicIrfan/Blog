@@ -10,7 +10,7 @@ $teal:    #39CCCC;
 $green:   #2ECC40;
 $olive:   #3D9970;
 $lime:    #01FF70;
-$elblue:  #037596;
+$elblue:  #3399CC;
 
 // Warm
 $yellow:  #FFDC00;
@@ -20,9 +20,13 @@ $fuchsia: #F012BE;
 $purple:  #B10DC9;
 $maroon:  #85144B;
 
-
 // Gray Scale
 $white:  #FAFAFA;
 $silver: #EDEEF0;
 $gray:   #424242;
 $black:  #212121;
+
+// Site colors
+$bg-color: #F6F6F8;
+$text-color: $black;
+$primary-color: $elblue;

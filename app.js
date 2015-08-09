@@ -34,7 +34,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting of routes
-app.get('/', routes.index);
+app.get('/', routes.dummy);
 app.get('/newPost', routes.newArticle);
 app.post('/newPost', routes.create);
 

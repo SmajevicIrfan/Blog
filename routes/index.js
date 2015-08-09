@@ -19,6 +19,34 @@ exports.index = function(req, res) {
 	});
 };
 
+exports.dummy = function(req, res) {
+	res.render('index', { pageTitle: 'Blog Homepage - dummy', feature:
+		{
+			title	  : 'Featured story test',
+			content	  : 'Nothing special',
+			author	  : {
+				username	: 'smajevicirfan',
+				name 		: 'Irfan Smajevic',
+				avatar 		: 'default-avatar.png'
+			},
+			thumb	  : 'summyFeatThumb.jpg',
+			created	  : new Date().toString().split(' '),
+			tags	  : [ 'testing' ],
+			people	  : [ {
+				username	: 'smajevicirfan',
+				name 		: 'Irfan Smajevic',
+				avatar 		: 'default-avatar.png'
+			}, {
+				username	: 'mironb',
+				name 		: 'Miron Banjac',
+				avatar 		: 'default-avatar.png'
+			} ],
+			views	  : 200,
+			likes	  : 27,
+			comments  : [ ]
+		}, articles: [ ] } );
+};
+
 // Accessing the new article editor
 exports.newArticle = function(req, res) {
 	req.admin = true;
@@ -32,24 +60,14 @@ exports.newArticle = function(req, res) {
 
 // Creating a new article
 exports.create = function(req, res) {
-	console.log(req.params);
-	console.log(req.body);
-	console.log(req.query);
-	
-	//res.json(req.body);
-	res.setHeader('Content-Type', 'text/plain')
-	res.write('you posted:\n')
-	res.end(JSON.stringify(req.body, null, 2))
-	
-	/*req.body.article.title = req.param('title');
-	req.body.article.content = req.param('content');
+	req.admin = true;
 	
 	articleProvider.create(req, function(error) {
 		if (error) {
 			res.sendStatus(error);
 		}
 		else {
-			this.index();
+			res.redirect(200, '..');
 		}
-	})*/
+	});
 };

@@ -237,11 +237,6 @@ ArticleProvider.prototype.list = function(req, callback) {
   			return;
   		}
 
-  		//Myb not needed
-  		for (var postKey in results) {
-  			results[postKey].content = "";
-  		}
-
   		callback(null, results);
   	});
 };
@@ -259,11 +254,6 @@ ArticleProvider.prototype.listAll = function(req, callback) {
   			console.log(err);
   			callback(400, null);
   			return;
-  		}
-
-  		//Myb not needed
-  		for (var postKey in results) {
-  			results[postKey].content = "";
   		}
 
   		callback(null, results);
@@ -502,11 +492,6 @@ ArticleProvider.prototype.listByTag = function(req, callback) {
 			return;
 		}
 
-		//Myb not needed
-  		for (var postKey in results) {
-  			results[postKey].content = "";
-  		}
-
   		callback(null, results);
 	});
 };
@@ -528,11 +513,6 @@ ArticleProvider.prototype.listByAuthor = function(req, callback) {
 			return;
 		}
 
-		//Myb not needed
-  		for (var postKey in results) {
-  			results[postKey].content = "";
-  		}
-
   		callback(null, results);
 	});
 };
@@ -548,7 +528,6 @@ ArticleProvider.prototype.findFeature = function() {
 			return 400;
 		}
 
-		results[0].content = "";
 		return results[0];
 	});
 };

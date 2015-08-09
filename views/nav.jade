@@ -1,24 +1,41 @@
+mixin nav-content
+	ul
+		li
+			a(href="/").active Articles
+		li
+			a(href="/works") Works
+		li
+			a(href="/map") Map
+		li
+			a(href="/about") About
+		li
+			a(href="/contact") Contact
+
+
 block nav
-	nav
-		#logo
-
-		ul#nav
-			li.active
-				a(href="/") Articles
-			li
-				a(href="/works") Works
-			li
-				a(href="/map") Map
-			li
-				a(href="/about") About
-			li
-				a(href="/contact") Contact
-
-		#nav-cta
+	header
+		.flex-left
+			#logo
+				// dummy
+				img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")
+			
+			nav
+				+nav-content
+			
+		#nav-cta.flex-right
 			#srch-btn
+				img(src="http://www.clker.com/cliparts/0/1/S/1/l/W/search-icon-hi.png", alt="Search")
 
-			#login
+			a(href="/login")#login Sign in
 
-			#logged-in
+			#logged-in.hidden
 				#profile
+					p Test
 				#new-post
+				
+		#mobile-nav-toggle
+	
+	#mobile-nav
+		+nav-content
+			li
+				a(href="/login") Sign in
