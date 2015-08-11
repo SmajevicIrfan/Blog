@@ -1,40 +1,39 @@
 mixin nav-content
 	ul
-		li
-			a(href="/").active Articles
-		li
+		li.header-link
+			a(href="/") Articles
+		li.header-link.active
 			a(href="/works") Works
-		li
+		li.header-link
 			a(href="/map") Map
-		li
+		li.header-link
 			a(href="/about") About
-		li
+		li.header-link
 			a(href="/contact") Contact
 
 
-block nav
+block nav		
 	header
 		.flex-left
-			#logo
-				// dummy
-				img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")
+			// dummy
+			img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")#logo
 			
 			nav
 				+nav-content
 			
-		#nav-cta.flex-right
+		.flex-right#nav-cta
 			#srch-btn
 				img(src="http://www.clker.com/cliparts/0/1/S/1/l/W/search-icon-hi.png", alt="Search")
 
-			a(href="/login")#login Sign in
+			a(href="/login").header-link#login Sign in
 
 			#logged-in.hidden
 				#profile
 					p Test
 				#new-post
 				
-		#mobile-nav-toggle
-	
+		button#mobile-nav-toggle Menu
+		
 	#mobile-nav
 		+nav-content
 			li

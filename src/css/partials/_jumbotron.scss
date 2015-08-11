@@ -1,0 +1,29 @@
+#jumbotron {
+	overflow: hidden;
+	
+	position: relative;
+	
+	height: 0;
+	width: 100%;
+	padding-bottom: 30%;
+	
+	.overlay {
+		box-shadow: 0 2px 5px #000 inset;
+	}
+	
+	.meta div {
+		margin-right: 10px;
+		
+		i {
+			margin-right: 5px;
+		}
+		
+		h5 {
+			margin: 0;
+		}
+	}
+}
+
+.is-opened ~ #jumbotron .overlay {
+	box-shadow: none;
+}

@@ -29,7 +29,7 @@ exports.dummy = function(req, res) {
 				name 		: 'Irfan Smajevic',
 				avatar 		: 'default-avatar.png'
 			},
-			thumb	  : 'summyFeatThumb.jpg',
+			thumb	  : 'feature-thumb.jpg',
 			created	  : new Date().toString().split(' '),
 			tags	  : [ 'testing' ],
 			people	  : [ {

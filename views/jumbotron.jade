@@ -5,34 +5,38 @@ block jumbotron
 
 		.wrapper
 			.flex-top
-				.top
+				.flex-left
 					.meta
 						.likes
-							img(src="/img/icons/heart.svg").like-icn
+							i.fa.fa-heart
 							h5.like-num= feature.likes
 						
 						.comments
-							img(src="/img/icons/comment.svg").comm-icn
+							i.fa.fa-comments
 							h5.comm-num= feature.comments.length
-
+							
+					.data
+						h2.title= feature.title
+						h5.date= (feature.created[1] + ' ' + feature.created[2] + ', ' + feature.created[3])
+				
+				.flex-right
 					.edit-btn
-
-				h2.title= feature.title
-				h5.date= (feature.created[1] + ' ' + feature.created[2] + ', ' + feature.created[3])
 			
-			.bottom
-				.people
-					- each person in feature.people
-						figure.person
-							img(src="/img/users/"+person.avatar, alt=person.name)
-							figcaption
-								a(href="/user/"+person._id)
-
-				#view-more
+			.flex-bottom
+				.flex-left
+					.people
+						- each person in feature.people
+							figure.person
+								img(src="/img/users/"+person.avatar, alt=person.name)
+								figcaption
+									a(href="/user/"+person._id)
+								
+				#view-more.flex-right
 					.left
 						h5 Featured story
 						h5 View More
+						
+					.right
+						i.fa.fa-chevron-circle-right.fa-2x
 
-					img(src="/img/icons/chevron-with-circle-right.svg")
-
-		a(href="/"+feature.url) View More
+			a(href="/"+feature.url) View More
