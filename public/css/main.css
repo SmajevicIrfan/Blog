@@ -220,7 +220,7 @@ body {
   background-color: #F6F6F8;
   font-size: 14px;
   line-height: 1.6;
-  font-family: "fira-sans";
+  font-family: "fira-sans", sans-serif;
   color: #212121;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -593,15 +593,19 @@ header img,
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .overlay {
-  background-image: -webkit-linear-gradient(315deg, rgba(0, 0, 0, 0.7) 50%, transparent 100%), -webkit-linear-gradient(315deg, #000 30%, rgba(0, 0, 0, 0.4) 50%);
-  background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.7) 50%, transparent 100%), linear-gradient(-225deg, #000 30%, rgba(0, 0, 0, 0.4) 50%);
+  background-image: -webkit-linear-gradient(315deg, rgba(0, 0, 0, 0.9) 50%, transparent 100%), -webkit-linear-gradient(315deg, #000 0%, rgba(0, 0, 0, 0.6) 60%);
+  background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.9) 50%, transparent 100%), linear-gradient(-225deg, #000 0%, rgba(0, 0, 0, 0.6) 60%);
 }
 .overlay img {
   width: 100%;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .wrapper {
@@ -622,7 +626,7 @@ header img,
   top: 0;
   width: 100%;
   height: 100%;
-  padding: 3em 2.5em 2.5em;
+  padding: 10px 27px;
 }
 .wrapper .flex-top .flex-left {
   -webkit-box-orient: vertical;
@@ -642,6 +646,19 @@ header img,
   height: 100%;
   opacity: 0;
 }
+.wrapper h1, .wrapper h2, .wrapper h3, .wrapper h4 {
+  margin: 0;
+  font-weight: 300;
+  color: white;
+}
+.wrapper h5, .wrapper h6 {
+  margin: 0;
+  letter-spacing: 0.15em;
+  word-spacing: 0.1em;
+  font-size: 85%;
+  font-weight: 400;
+  color: #d9d9d9;
+}
 
 .likes i,
 .comments i,
@@ -651,6 +668,29 @@ header img,
 
 .likes.liked i {
   color: #E64C65;
+}
+
+.meta {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 8% 0;
+}
+
+h2.title {
+  margin-bottom: 4%;
+}
+
+.person {
+  margin: 0 15px 0 0;
+}
+.person:last-child {
+  margin: 0;
+}
+.person img {
+  border-radius: 50%;
+  border: 2px white solid;
 }
 
 header {
@@ -811,9 +851,13 @@ nav ul,
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 60px;
+  padding: 22.5px 0;
   background-color: #FAFAFA;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
+}
+#page-title h3 {
+  font-weight: 300;
+  margin: 0 20px;
 }
 
 #jumbotron {
@@ -821,21 +865,46 @@ nav ul,
   position: relative;
   height: 0;
   width: 100%;
-  padding-bottom: 30%;
+  padding-bottom: 35%;
 }
 #jumbotron .overlay {
   box-shadow: 0 2px 5px #000 inset;
 }
 #jumbotron .meta div {
-  margin-right: 10px;
+  margin-right: 30px;
 }
 #jumbotron .meta div i {
-  margin-right: 5px;
+  margin-right: 12px;
 }
 #jumbotron .meta div h5 {
   margin: 0;
 }
+@media (max-width: 800px) {
+  #jumbotron {
+    height: 300px;
+    padding-bottom: 0;
+  }
+  #jumbotron .overlay {
+    height: 100%;
+  }
+  #jumbotron .overlay img {
+    width: auto;
+    height: 100%;
+  }
+}
 
 .is-opened ~ #jumbotron .overlay {
   box-shadow: none;
+}
+
+#view-more .left {
+  text-align: right;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+#view-more .right {
+  margin: auto;
+}
+#view-more .right i.fa.fa-chevron-circle-right {
+  font-size: 2.5em;
 }

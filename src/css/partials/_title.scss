@@ -2,8 +2,14 @@
 	display: flex;
 	align-items: center;
 	
-	height: 60px;
+	padding: 22.5px 0;
 	
 	background-color: $white;
 	box-shadow: 0 1px 5px rgba(#000, 0.26);
+	
+	h3 {
+		font-weight: 300;
+		
+		margin: 0 20px;
+	}
 }

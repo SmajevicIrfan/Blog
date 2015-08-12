@@ -8,11 +8,11 @@ block jumbotron
 				.flex-left
 					.meta
 						.likes
-							i.fa.fa-heart
+							i.fa.fa-heart.fa-lg
 							h5.like-num= feature.likes
 						
 						.comments
-							i.fa.fa-comments
+							i.fa.fa-comments.fa-lg
 							h5.comm-num= feature.comments.length
 							
 					.data
@@ -23,13 +23,12 @@ block jumbotron
 					.edit-btn
 			
 			.flex-bottom
-				.flex-left
-					.people
-						- each person in feature.people
-							figure.person
-								img(src="/img/users/"+person.avatar, alt=person.name)
-								figcaption
-									a(href="/user/"+person._id)
+				.people.flex-left
+					- each person in feature.people
+						figure.person
+							img(src="/img/users/"+person.avatar, alt=person.name)
+							figcaption
+								a(href="/user/"+person._id)
 								
 				#view-more.flex-right
 					.left
@@ -37,6 +36,6 @@ block jumbotron
 						h5 View More
 						
 					.right
-						i.fa.fa-chevron-circle-right.fa-2x
+						i.fa.fa-chevron-circle-right
 
 			a(href="/"+feature.url) View More

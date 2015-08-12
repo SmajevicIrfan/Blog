@@ -5,25 +5,56 @@
 	
 	height: 0;
 	width: 100%;
-	padding-bottom: 30%;
+	padding-bottom: 35%;
 	
 	.overlay {
 		box-shadow: 0 2px 5px #000 inset;
 	}
 	
 	.meta div {
-		margin-right: 10px;
+		margin-right: 30px;
 		
 		i {
-			margin-right: 5px;
+			margin-right: 12px;
 		}
 		
 		h5 {
 			margin: 0;
 		}
 	}
+	
+	@media (max-width: 800px) {
+		height: 300px;
+		padding-bottom: 0;
+		
+		.overlay {
+			height: 100%;
+			
+			img {
+				width: auto;
+				height: 100%;
+			}
+		}
+	}
 }
 
 .is-opened ~ #jumbotron .overlay {
 	box-shadow: none;
+}
+
+#view-more {
+	.left {
+		text-align: right;
+		text-transform: uppercase;
+		
+		margin-right: 10px;
+	}
+	
+	.right {
+		margin: auto;
+		
+		i.fa.fa-chevron-circle-right {
+			font-size: 2.5em;
+		}
+	}
 }
