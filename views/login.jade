@@ -1,0 +1,33 @@
+extends ./layout.jade
+
+block jumbotron
+	
+block title
+	
+block content
+	.form-wrapper
+		.section-title.divider.no-top
+			h2
+				span Sign in
+		
+		if message.length > 0
+			div.alert.alert-warning= message
+			
+		form(method="post").primary
+			div.form-field
+				label(for="login-user") Username or Email
+				input(type="text", name="login-user")
+			div.form-field
+				label(for="login-password") Password
+				input(type="password", name="login-password")
+				
+			button(type="submit", value="send") Sign in
+		
+		hr
+		
+		.toggle-form
+			.section-title
+				h2
+					span New here?
+			form(action="/user/signup")
+				button(type="submit", data-type="register") Create an account

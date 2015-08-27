@@ -1,7 +1,9 @@
 /* global process */
 var mongoose = require('mongoose');
-var mongoURL = process.env.CUSTOMCONNSTR_MONGOLAB_URI || "mongodb://127.0.0.1:27017/blog";
+var mongoURL = process.env.CUSTOMCONNSTR_MONGOLAB_URI || "mongodb://127.0.0.1:27017/standard";
 var mongoOptions = { };
+
+var bcrypt = require('bcrypt-nodejs');
 
 mongoose.connect(mongoURL, mongoOptions, function(err, res) {
 	if (err) { 
@@ -13,20 +15,27 @@ mongoose.connect(mongoURL, mongoOptions, function(err, res) {
 	}
 });
 
-
 var Schema = mongoose.Schema/*, Myb not needed after all
 	ObjectId = Schema.ObjectId*/;
 
 var User = new Schema({
 	// myb add names
 	// name: { type: String, required: true },
-	username  : { type: String, required: true },
+	username  : { type: String, required: true, unique: true },
 	password  : { type: String, required: true },
-	email	  : { type: String, required: true },
+	email	  : { type: String, required: true, unique: true },
 	avatar	  : { type: String, default: 'default-avatar.jpg' },
 	created	  : { type: Date, default: Date.now },
 	crewMember: { type: Boolean, default: false }
 });
+
+User.methods.generateHash = function(password) {
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+}
+
+User.methods.validate = function(password) {
+	return bcrypt.compare(password, this.local.password);
+}
 
 var Comment = new Schema({
 	user	  : { type: {

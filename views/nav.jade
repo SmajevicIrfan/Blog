@@ -1,4 +1,4 @@
-mixin nav-content
+mixin nav-content(additional)
 	ul
 		li.header-link
 			a(href="/") Articles
@@ -10,6 +10,10 @@ mixin nav-content
 			a(href="/about") About
 		li.header-link
 			a(href="/contact") Contact
+		- each add in additional
+			li.header-link
+				a(href=add.link)= add.name
+			
 
 
 block nav		
@@ -19,13 +23,13 @@ block nav
 			img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")#logo
 			
 			nav
-				+nav-content
+				+nav-content([])
 			
 		.flex-right#nav-cta
 			#srch-btn
 				img(src="http://www.clker.com/cliparts/0/1/S/1/l/W/search-icon-hi.png", alt="Search")
 
-			a(href="/login").header-link#login Sign in
+			a(href="/user/login").header-link#login Sign in
 
 			#logged-in.hidden
 				#profile
@@ -35,6 +39,4 @@ block nav
 		button#mobile-nav-toggle Menu
 		
 	#mobile-nav
-		+nav-content
-			li
-				a(href="/login") Sign in
+		+nav-content([{link: "/user/login", name: "Sign in"}])

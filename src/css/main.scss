@@ -10,6 +10,7 @@
 @import 'base/selection-colors';
 @import 'base/links';
 @import 'base/typography';
+@import 'base/inputs';
 @import 'base/buttons';
 
 // Partials(Common modules on pages)
@@ -24,3 +25,5 @@
 @import 'partials/nav';
 @import 'partials/title';
 @import 'partials/jumbotron';
+
+@import 'partials/user-form';

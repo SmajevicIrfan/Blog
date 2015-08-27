@@ -1,0 +1,39 @@
+extends ./layout.jade
+
+block jumbotron
+	
+block title
+	
+block content
+	.form-wrapper
+		.section-title.divider.no-top
+			h2
+				span Create an account
+				
+		if message.length > 0
+			div.alert.alert-warning= message
+			
+		form(method="post").primary
+			div.form-field
+				label(for="username") Username
+				input(type="text", name="username")
+			div.form-field
+				label(for="email") Email
+				input(type="email", name="email")
+			div.form-field
+				label(for="password") Password
+				input(type="password", name="password")
+			div.form-field
+				label(for="passwordRepeat") Enter your password again
+				input(type="password", name="passwordRepeat")
+				
+			button(type="submit", value="send") Create your account
+		
+		hr
+		
+		.toggle-form
+			.section-title
+				h2
+					span Already have an account?
+			form(action="/user/login")
+				button(type="submit", data-type="login") Sign in

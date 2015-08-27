@@ -2,6 +2,11 @@
 	display: none;
 }
 
+.no-top {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
 .flex-left,
 .flex-right,
 .flex-top,
@@ -38,7 +43,7 @@ header img,
 	}
 }
 
-.wrapper {
+#jumbotron .wrapper {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -48,10 +53,14 @@ header img,
 	
 	width: 100%;
 	height: 100%;
-	padding: 10px 27px;
+	padding: 10px 35px;
 	
 	.flex-top .flex-left {
 		flex-direction: column;
+	}
+	
+	.flex-bottom  {
+		margin-bottom: 2%;
 	}
 	
 	&:after,

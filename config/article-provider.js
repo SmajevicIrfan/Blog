@@ -1,7 +1,7 @@
 var db = require('./mongo-client');
 
 var publicFields = '_id title content url author tags created likes comments';
-ArticleProvider = function() {};
+var ArticleProvider = function() {};
 
 ////////////////////////////////////////////////////////////////////
 /*
