@@ -1,0 +1,163 @@
+header {
+	z-index: 1000;
+	position: relative;
+	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+	min-height: 60px;
+	padding: 0 10px;
+	
+	background-color: $white;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	
+	.flex-left,
+	.flex-right {
+		align-items: center;
+	}
+	
+	a {
+		color: $text-color;
+		
+		padding: 29px 20px;
+	}
+}
+
+#logged-in img {
+	border-radius: 50%;
+}
+
+nav ul {
+	display: flex;
+	
+	margin: 0 20px;
+	
+	li:after {
+		content: "";
+		display: block;
+		
+		height: 2em;
+		width: 1px;
+		margin-left: -1px;
+
+		background-color: #bbb;
+	}
+	
+	li.no-divider:after {
+		display: none;
+	}
+	
+	li:hover:after,
+	li.active:after {
+		display: none;
+	}
+	
+	li:last-child:after {
+		display: none;
+	}
+}
+
+.header-link {
+	display: flex;
+	align-items: center;
+	
+	transition: all 0.2s ease-in-out;
+	
+	&:hover,
+	&.active {
+		color: $white;
+		a { color: $white; }
+		
+		background-color: lighten($primary-color, 5%);
+	}
+	
+	&.active {
+		background-color: $primary-color;
+	}
+}
+
+nav ul,
+#mobile-nav ul {
+	list-style-type: none;
+}
+
+#mobile-nav {
+	z-index: 1000;
+	position: absolute;
+	
+	width: 100%;
+	height: 0;
+	
+	background: darken($white, 3%);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	overflow: hidden;
+	
+	transition: all 0.5s ease-in-out;
+	
+	&.is-opened {
+		height: 255px;
+	}
+	
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	li {
+		text-align: center;
+		
+		padding: 10px 0;
+		
+		border-bottom: 1px $black solid;
+	}
+	
+	li.active {
+		box-shadow: 0 -3px darken($primary-color, 10%) inset;
+	}
+	
+	li:hover {
+		box-shadow: 0 -3px darken($primary-color, 5%) inset;
+	}
+	
+	li:last-child {
+		border-bottom: none;
+	}
+	
+	a {
+		width: 100%;
+	}
+}
+
+#mobile-nav-toggle {
+	height: auto;
+	margin: 0;
+	padding: 0 5px;
+	
+	font-weight: 400;
+	letter-spacing: 0;
+	
+	border: 2px $black solid;
+}
+
+#mobile-nav,
+#mobile-nav-toggle {
+	display: none;
+}
+
+// temp
+#srch-btn {
+	display: none;
+}
+
+@media screen and (max-width: 650px) {
+	nav,
+	.flex-right {
+		display: none;
+	}
+	
+	#mobile-nav,
+	#mobile-nav-toggle {
+		display: block;
+	}
+}

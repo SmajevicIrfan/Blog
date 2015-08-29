@@ -14,13 +14,14 @@ html(lang="en")
 		script(src="//use.typekit.net/gkd3zab.js")
 		script try{Typekit.load({ async: true });}catch(e){}
 		
-		block additional
-		
 		link(rel="shortcut icon" href="/img/favicons/favicon.ico")
 		link(rel="stylesheet" href="/css/main.min.css")
+		
+		block additional
 
 	body
-		include ./nav.jade
+		block nav
+			include ./nav.jade
 		block jumbotron
 			include ./jumbotron.jade
 
@@ -30,9 +31,6 @@ html(lang="en")
 			block content
 
 		include ./footer.jade
-
-		// jQuery
-		script(src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js")
 		
 		// My Script
 		script(src="/js/main.min.js")

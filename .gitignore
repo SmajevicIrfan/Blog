@@ -60,7 +60,3 @@ node_modules
 ### Sass ###
 .sass-cache/
 *.css.map
-
-
-### Rendered files ###
-public

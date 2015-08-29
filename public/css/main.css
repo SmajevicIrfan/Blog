@@ -714,6 +714,8 @@ h2.title {
 }
 
 header {
+  z-index: 1000;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -855,7 +857,7 @@ nav ul,
   display: none;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 650px) {
   nav,
   .flex-right {
     display: none;

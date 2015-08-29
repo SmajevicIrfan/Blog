@@ -1,11 +1,7 @@
-/*
- *
- *  Callback functions for user routing
- *
- */
- 
 var express = require('express');
 var router = express.Router();
+
+var passport = require('../config/passport.js');
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -18,37 +14,29 @@ function isLoggedIn(req, res, next) {
     res.redirect('/user/login');
 }
 
-module.exports = function (passport) {
-	router.get('/login', function(req, res) {
-		res.render('login', { pageTitle: 'Login - Blog', message: req.flash('loginMessage') });
-	});
-	
-	router.post('/login', function(req, res) {
-		var post = req.body;
-		
-		if (post.user === 'smajevicirfan' && post.password === 'testpassword123') {
-			req.session.user_id = 1;
-			res.redirect('/');
-		}
-		else {
-			res.sendStatus(401);
-		}
-	});
-	
-	router.get('/signup', function(req, res) {
-		res.render('register', { pageTitle: 'Register - Blog', message: req.flash('signupMessage') });
-	});
-	
-	router.post('/signup', passport.authenticate('local-signup', {
-		successRedirect: '/',
-		failureRedirect: '/user/signup',
-		failureFlash: true
-	}));
-	
-	router.get('/logout', function(req, res) {
-		req.logout();
-		res.redirect('/');
-	});
-	
-	return router;
-};
+router.get('/login', function(req, res) {
+	res.render('login', { pageTitle: 'Login - Blog', selected: 'Sign in', message: req.flash('loginMessage') });
+});
+
+router.post('/login', passport.authenticate('local-login', {
+	successRedirect: '/',
+	failureRedirect: '/user/login',
+	failureFlash: true
+}));
+
+router.get('/signup', function(req, res) {
+	res.render('register', { pageTitle: 'Register - Blog', selected: 'Sign in', message: req.flash('signupMessage') });
+});
+
+router.post('/signup', passport.authenticate('local-signup', {
+	successRedirect: '/',
+	failureRedirect: '/user/signup',
+	failureFlash: true
+}));
+
+router.get('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
+
+module.exports = router;

@@ -1,42 +1,46 @@
+-var menu = { '/': 'Articles', '/work': 'Projects', '/map': 'Map', '/about': 'About us', '/contact': 'Contact' }
+
 mixin nav-content(additional)
 	ul
-		li.header-link
-			a(href="/") Articles
-		li.header-link.active
-			a(href="/works") Works
-		li.header-link
-			a(href="/map") Map
-		li.header-link
-			a(href="/about") About
-		li.header-link
-			a(href="/contact") Contact
+		- each name, link in menu
+			if selected === name
+				li.header-link.active
+					a(href=link, title=name)= name
+			else
+				li.header-link
+					a(href=link, title=name)= name
+
 		- each add in additional
-			li.header-link
-				a(href=add.link)= add.name
+			if selected === add.name
+				li.header-link.active
+					a(href=add.link)= add.name
+			else
+				li.header-link
+					a(href=add.link)= add.name
+	
+header
+	.flex-left
+		// dummy
+		img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")#logo
+		
+		nav
+			+nav-content([])
+		
+	.flex-right#nav-cta
+		#srch-btn
+			img(src="http://www.clker.com/cliparts/0/1/S/1/l/W/search-icon-hi.png", alt="Search")
 			
-
-
-block nav		
-	header
-		.flex-left
-			// dummy
-			img(src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png", alt="Logo")#logo
-			
-			nav
-				+nav-content([])
-			
-		.flex-right#nav-cta
-			#srch-btn
-				img(src="http://www.clker.com/cliparts/0/1/S/1/l/W/search-icon-hi.png", alt="Search")
-
+		if selected === 'Sign in'
+			a(href="/user/login").header-link.active#login Sign in
+		else
 			a(href="/user/login").header-link#login Sign in
 
-			#logged-in.hidden
-				#profile
-					p Test
-				#new-post
-				
-		button#mobile-nav-toggle Menu
-		
-	#mobile-nav
-		+nav-content([{link: "/user/login", name: "Sign in"}])
+		#logged-in.hidden
+			#profile
+				p Test
+			#new-post
+			
+	button#mobile-nav-toggle Menu
+	
+#mobile-nav
+	+nav-content([{link: "/user/login", name: "Sign in"}])
